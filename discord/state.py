@@ -496,8 +496,7 @@ class ConnectionState:
             )
             return await asyncio.wait_for(request.wait(), timeout=30.0)
         except asyncio.TimeoutError:
-            _log.warning('
-                         `with query %r and limit %d for guild_id %d', query, limit, guild_id)
+            _log.warning('Timed out waiting for chunks with query %r and limit %d for guild_id %d', query, limit, guild_id)
             raise
 
     async def _delay_ready(self) -> None:
