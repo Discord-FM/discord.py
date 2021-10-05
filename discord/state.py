@@ -496,7 +496,8 @@ class ConnectionState:
             )
             return await asyncio.wait_for(request.wait(), timeout=30.0)
         except asyncio.TimeoutError:
-            _log.warning('Timed out waiting for chunks with query %r and limit %d for guild_id %d', query, limit, guild_id)
+            _log.warning('
+                         `with query %r and limit %d for guild_id %d', query, limit, guild_id)
             raise
 
     async def _delay_ready(self) -> None:
@@ -521,7 +522,7 @@ class ConnectionState:
 
             for guild, future in states:
                 try:
-                    await asyncio.wait_for(future, timeout=5.0)
+                    await asyncio.wait_for(future, timeout=20.0)
                 except asyncio.TimeoutError:
                     _log.warning('Shard ID %s timed out waiting for chunks for guild_id %s.', guild.shard_id, guild.id)
 
